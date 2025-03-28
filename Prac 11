@@ -1,0 +1,60 @@
+// Load the images
+image1 = imread('C:\Users\Shreyas\OneDrive\Desktop\shubham\car1.jpg');
+image2 = imread('C:\Users\Shreyas\OneDrive\Desktop\shubham\car2.jpg');
+
+// Get dimensions of first image
+[h1, w1] = size(image1);
+[h2, w2] = size(image2);
+
+// Find minimum dimensions
+h = min(h1, h2);
+w = min(w1, w2);
+
+// Crop both images to minimum dimensions
+image1 = image1(1:h, 1:w);
+image2 = image2(1:h, 1:w);
+
+// Convert images to double for arithmetic operations
+image1 = double(image1);
+image2 = double(image2);
+
+// 1. Addition
+result_add = image1 + image2;
+result_add = min(max(result_add, 0), 255); // Clamp to [0, 255]
+figure(1);
+imshow(uint8(result_add));
+title('Addition Result');
+imwrite(uint8(result_add), 'result_add.png');
+
+// 2. Subtraction
+result_sub = image1 - image2;
+result_sub = min(max(result_sub, 0), 255);
+figure(2);
+imshow(uint8(result_sub));
+title('Subtraction Result');
+imwrite(uint8(result_sub), 'result_sub.png');
+
+// 3. Multiplication
+result_mul = image1 .* image2;
+result_mul = min(max(result_mul, 0), 255);
+figure(3);
+imshow(uint8(result_mul));
+title('Multiplication Result');
+imwrite(uint8(result_mul), 'result_mul.png');
+
+// 4. Division
+result_div = image1 ./ (image2 + %eps); // Added small value to avoid division by zero
+result_div = min(max(result_div, 0), 255);
+figure(4);
+imshow(uint8(result_div));
+title('Division Result');
+imwrite(uint8(result_div), 'result_div.png');
+
+// Display original images for comparison
+figure(5);
+imshow(uint8(image1));
+title('Original Image 1');
+
+figure(6);
+imshow(uint8(image2));
+title('Original Image 2');
