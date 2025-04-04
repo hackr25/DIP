@@ -1,4 +1,11 @@
 Practical 7
+Step 1 : Open scilab 6.0.1 
+Step 2 : Click on Application -> module manager(ATOMS)
+Step 3 : Click on Image Processing and install all the modules present in it
+Step 4 : Click on Signal Processing and install all the modules present in it
+Step 5 : Run this command on console: atomsRemove('scicv')
+Step 6 : Restart scilab
+Step 7 : Run the code
 
 Aim: - Perform threshold operation, perform gray level slicing without background.  Threshold Operation
 Code: 
