@@ -1,13 +1,27 @@
-// Linear Cross Correlation
+Practical 3
+
+Aim: Linear Cross correlation of a 2D matrix, Circular correlation between two
+signals and Linear auto correlation of a 2D matrix, Linear Cross correlation of a
+2D matrix.
+
+A] Linear Cross correlation of a 2D matrix
+Code:
+
 clc;
 x = [3,1;2,4];
 h1 = [1,5;2,3];
 h2 = h1(:,$:-1:1);
 h = h2($:-1:1,:);
-y = conv2(x,h);
-disp(y, 'Linear cross Correlation result y=');
+y = conv2(x,h)
+disp(y, 'Linear cross Correlation result y=')
 
-// Circular Correlation
+
+
+
+
+B] Circular correlation between two signals
+Code:
+
 clc;
 x = [1,5;2,4];
 h = [3,2;4,1];
@@ -17,12 +31,36 @@ X = fft2(x);
 H = fft2(h);
 Y = X.*H;
 y = ifft(Y);
-disp(y,'Circular Correlation result y=');
+disp(y,'Circular Correlation result y=')
 
-// Linear Auto Correlation
+
+
+
+
+
+C] Linear auto correlation of a 2D matrix
+Code:
+
 clc;
 x1 = [1,1;1,1];
 x2 = x1(:,$:-1:1);
 x2 = x2($:-1:1,:);
-x = conv2(x1,x2);
-disp(x,'Linear auto Correlation result x=');
+x = conv2(x1,x2)
+disp(x,'Linear auto Correlation result x=')
+
+
+
+
+
+
+D] Linear Cross correlation of a 2D matrix
+Code:
+
+clc;
+x = [1,1;1,1];
+h1 = [1,2;3,4];
+h2 = h1(:,$:-1:1);
+h = h2($:-1:1,:);
+y = conv2(x,h)
+disp(y, ' Linear cross Correlation result y=')
+
