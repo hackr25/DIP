@@ -1,45 +1,58 @@
-// Threshold Operation
+Practical 7
+
+Aim: - Perform threshold operation, perform gray level slicing without background.  Threshold Operation
+Code: 
+
 clc;
-close;
-a = imread('C:\Users\ADMIN\Desktop\flower.jpg');
+close; 
+a = imread('C:\Users\Admin\Downloads\white-flower.jpg');    //select your image path
 a = rgb2gray(a);
-[m n] = size(a);
+[m n] = size(a); 
 t = input('Enter threshold parameter: ');
-for i = 1:m
-    for j = 1:n
-        if(a(i,j) < t)
-            b(i,j) = 0;
-        else
-            b(i,j) = 255;
+for i = 1:m 
+    for j = 1:n 
+        if(a(i,j)<t) 
+            b(i,j)=0; 
+        else  b(i,j) =255; 
         end
     end
 end
-figure(1)
+figure(1) 
 imshow(a);
 title('Original Image')
 figure(2)
 imshow(b);
-title('Threshold Image')
-xlabel(sprintf('Threshold Value is %g ', t))
+title('Threshold Image') 
+xlabel(sprintf('Threshold Value is %g ',t)) 
 
-// Gray Level Slicing without Background
-clc;
-x = imread('C:\Users\ADMIN\Desktop\flower.jpg');
+*Enter Threshold value : 140*
+
+
+
+
+
+
+Gray Level Scaling without background.
+Code:
+
+clc ;
+close; 
+x = imread('C:\Users\Admin\Downloads\white-flower.jpg');     //select your image path
 x = rgb2gray(x);
 y = double(x);
-[m,n] = size(y);
+[m,n]= size(y);
 L = max(max(x));
-a = round(L/2);
+a = round(L/2) ;
 b = L;
-for i = 1:m
-    for j = 1:n
-        if(y(i,j) >= a & y(i,j) <= b)
+for i =1: m
+    for j =1: n
+        if(y(i,j)>=a & y(i,j)<=b)
             z(i,j) = L;
         else
-            z(i,j) = 0;
+            z(i,j)=0;
         end
     end
-end
+    end
 z = uint8(z);
 figure(1)
 imshow(x);
