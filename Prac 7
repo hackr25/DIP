@@ -11,26 +11,34 @@ Aim: - Perform threshold operation, perform gray level slicing without backgroun
 Code: 
 
 clc;
-close; 
-a = imread('C:\Users\Admin\Downloads\white-flower.jpg');    //select your image path
+close();
+
+a = imread('C:\Users\Shreyas\Downloads\Ham44.jpg'); //Paste Your Image File path
 a = rgb2gray(a);
-[m n] = size(a); 
+[m, n] = size(a);
+
 t = input('Enter threshold parameter: ');
+b = zeros(m, n);
+
 for i = 1:m 
     for j = 1:n 
-        if(a(i,j)<t) 
-            b(i,j)=0; 
-        else  b(i,j) =255; 
+        if a(i,j) < t then
+            b(i,j) = 0; 
+        else  
+            b(i,j) = 255; 
         end
     end
 end
-figure(1) 
+
+figure(1);
 imshow(a);
-title('Original Image')
-figure(2)
-imshow(b);
-title('Threshold Image') 
-xlabel(sprintf('Threshold Value is %g ',t)) 
+title('Original Image');
+
+figure(2);
+imshow(uint8(b));
+title('Threshold Image');
+xlabel(sprintf('Threshold Value is %g', t));
+
 
 *Enter Threshold value : 140*
 
@@ -42,28 +50,37 @@ xlabel(sprintf('Threshold Value is %g ',t))
 Gray Level Scaling without background.
 Code:
 
-clc ;
-close; 
-x = imread('C:\Users\Admin\Downloads\white-flower.jpg');     //select your image path
+clc;
+close();
+
+x = imread('C:\Users\Shreyas\Downloads\Ham44.jpg'); //Paste Your Image File path
 x = rgb2gray(x);
 y = double(x);
-[m,n]= size(y);
-L = max(max(x));
-a = round(L/2) ;
+[m,n] = size(y);
+
+L = max(y);
+a = round(L / 2);
 b = L;
-for i =1: m
-    for j =1: n
-        if(y(i,j)>=a & y(i,j)<=b)
+
+z = zeros(m, n);
+
+for i = 1:m
+    for j = 1:n
+        if (y(i,j) >= a & y(i,j) <= b) then
             z(i,j) = L;
         else
-            z(i,j)=0;
+            z(i,j) = 0;
         end
     end
-    end
+end
+
 z = uint8(z);
-figure(1)
+
+figure(1);
 imshow(x);
-title('Original Image')
-figure(2)
+title('Original Image');
+
+figure(2);
 imshow(z);
-title('Gray Level Slicing without preserving background')
+title('Gray Level Slicing without Preserving Background');
+
